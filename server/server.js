@@ -1,6 +1,19 @@
 const express = require('express');
 const app = express();
 const router = require('./Router');
+const dotenv = require('dotenv');
+const { sequelize } = require('./models');
+
+dotenv.config()
+
+sequelize
+  .sync()
+  .then(() => {
+    console.log('sequelize-DB연결');
+  })
+  .catch((err) => {
+    console.log('DB연결 실패', err);
+  });
 
 app.use('/api', router);
 
