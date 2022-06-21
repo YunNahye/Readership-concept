@@ -1,8 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import EditorJS from '@editorjs/editorjs';
-import Header from "@editorjs/header";
-import List from "@editorjs/list";
-import Embed from "@editorjs/embed";
+import { EDITOR_JS_TOOLS } from './tools';
 
 const Editor = () => {
   const editor = useRef(null);
@@ -11,25 +9,29 @@ const Editor = () => {
     if (editor.current === null) {
       editor.current = new EditorJS({
         holder: "editorJS",
-        tools: {
-          header: {
-            class: Header,
-            inlineToolbar: ["link"]
-          },
-          list: {
-            class: List,
-            inlineToolbar: true
-          },
-          embed: {
-            class: Embed,
-            inlineToolbar: false,
-            config: {
-              services: {
-                youtube: true,
-                coub: true
+        tools: EDITOR_JS_TOOLS,
+        data: {
+          blocks: [
+            {
+              type: 'header',
+              data: {
+                text: '제목을 입력하세요',
+                level: 1
+              }
+            },
+            {
+              type: 'paragraph',
+              data: {
+                text: ''
+              }
+            },
+            {
+              type: 'paragraph',
+              data: {
+                text: '내용을 입력하세요'
               }
             }
-          }
+          ]
         }
       })
     }
