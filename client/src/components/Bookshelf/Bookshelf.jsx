@@ -48,7 +48,7 @@ const Helper = styled.div`
     border-radius: 50%;
     top: 0;
     left: 0;
-    box-shadow: -50px -50px 0 0 #FADCD5;
+    box-shadow: -2vw -2vw 0 0 #FADCD5;
   }
 `
 
