@@ -1,10 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
+import SectionList from '../SectionList';
 
 const Bookshelf = () => {
   return(
     <>
-      <BookshelfDiv></BookshelfDiv>
+      <BookshelfDiv>
+        <SectionList></SectionList>
+      </BookshelfDiv>
       <Helper></Helper>
     </>
     
@@ -18,11 +21,9 @@ const BookshelfDiv = styled.div`
   width: 15vw;
   height: 83vh;
   background-color: #FADCD5;
-  /* border: solid 1px #d8a093; */
   border-radius: 35px;
   &:before {
     background-color: #FADCD5;
-    /* border: solid 1px #d8a093; */
     border-radius: 35px;
     content: '';
     position: absolute;

@@ -34,4 +34,9 @@ Object.keys(db).forEach(modelName => {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
+db.section.hasMany(db.report, {
+  foreignKey: 'sectionId',
+  onDelete: 'cascade'
+});
+
 module.exports = db;
