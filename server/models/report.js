@@ -5,11 +5,11 @@ module.exports = function(sequelize, DataTypes) {
       reportId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        autoIncrement: true,
         primaryKey: true
       },
-      title: {
-        type: DataTypes.STRING(500),
-        allowNull: false
+      section: {
+        type: DataTypes.STRING(500)
       },
       content: {
         type: DataTypes.STRING,

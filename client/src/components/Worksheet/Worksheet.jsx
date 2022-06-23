@@ -6,7 +6,6 @@ const Worksheet = () => {
   return(
     <WorksheetDiv>
       <Editor />
-      <SaveBtn />
     </WorksheetDiv>
   );
 };
@@ -20,14 +19,5 @@ const WorksheetDiv = styled.div`
   overflow-y: scroll;
 `;
 
-const SaveBtn = styled.div`
-  position: fixed;
-  right: 24px;
-  bottom: 2vh;
-  width: 90px;
-  height: 40px;
-  background-color: #D8A093;
-  border-radius: 10px;
-`
 
 export default Worksheet;
