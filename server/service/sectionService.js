@@ -1,7 +1,7 @@
 const models = require('../models');
 const sectionModel = models.section;
 
-exports.createReport = async( name ) => {
+exports.createSection = async( name ) => {
   try {
     const newSection = {
       name

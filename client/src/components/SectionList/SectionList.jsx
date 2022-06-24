@@ -19,18 +19,24 @@ const SectionList = () => {
     setMenuList(['', ...menuList]);
   };
 
-  const addSection = async() => {
-
+  const addSection = async( name ) => {
+    const newMenuList = [...menuList];
+    hidePlus();
+    newMenuList[0] = name;
+    setMenuList(newMenuList);
+    await createSection(name);
   };
 
   return(
     <SectionListDiv>
       {menuList.map((menu) => (
-        <Section key={menu} title={menu} />
+        <Section key={menu} title={menu} addSection={addSection} />
       ))}
-      <Plus onMouseEnter={showPlus} onMouseLeave={hidePlus} onClick={addMenu}>
-        <path d="m15 5v20m-10-10h20" stroke={plusColor} strokeWidth="2.2" strokeLinecap="round"/>
-      </Plus>
+      {menuList[0] && 
+        <Plus onMouseEnter={showPlus} onMouseLeave={hidePlus} onClick={addMenu}>
+          <path d="m15 5v20m-10-10h20" stroke={plusColor} strokeWidth="2.2" strokeLinecap="round"/>
+        </Plus>
+      }
     </SectionListDiv>
   );
 };
@@ -46,7 +52,7 @@ const SectionListDiv = styled.div`
 const Plus = styled.svg`
   cursor: pointer;
   float: right;
-  margin-top: 6px;
+  margin-top: 0.3vh;
   width: 30px;
   height: 30px;
 `;

@@ -1,10 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-const Section = ({ title }) => {
-  const [name, setName] = useState(title);
+const Section = ({ title, addSection }) => {
   const [editMode, setEditMode] = useState(false);
   const inputElement = useRef(null);
+
+  const add = () => {
+    if(inputElement.current.value !== '') {
+      addSection(inputElement.current.value);
+    }
+  };
+
+  const keyPressAdd = (e) => {
+    if(e.key === 'Enter') add();
+  }
 
   useEffect(() => {
     if(title === '') {
@@ -22,10 +31,10 @@ const Section = ({ title }) => {
     <SectionDiv>
       {editMode ?
         <>
-          <Input ref={inputElement}/>
-          <CheckMark><path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#BF7E6F'/></CheckMark>
+          <Input ref={inputElement} onKeyDown={keyPressAdd}/>
+          <CheckMark onClick={add}><path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#D8A093'/></CheckMark>
         </> :
-        [name]
+        [title]
       }
     </SectionDiv>
   );
@@ -34,12 +43,13 @@ const Section = ({ title }) => {
 const SectionDiv = styled.div`
   cursor: pointer;
   width: 100%;
-  height: 2.5vh;
+  height: 35px;
   margin-bottom: 10px;
   background-color: #FFF0ED;
   color: #BF7E6F;
-  line-height: 2.5vh;
-  font-size: 18px;
+  line-height: 35px;
+  font-size: 16px;
+  font-weight: 600;
   padding-left: 2vw;
 `;
 
@@ -48,7 +58,8 @@ const Input = styled.input`
   height: 95%;
   border: 0px;
   color: #BF7E6F;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
   background-color: #FFF0ED;
   :focus {
     outline: none;
@@ -58,7 +69,7 @@ const Input = styled.input`
 const CheckMark = styled.svg`
   cursor: pointer;
   float: right;
-  margin-top: 0.3vh;
+  margin-top: 5px;
   margin-right: 12px;
   width: 24px;
   height: 24px;
