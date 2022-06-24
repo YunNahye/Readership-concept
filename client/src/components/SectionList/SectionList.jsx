@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Section from './Section';
-import { createSection } from '../../api/sectionAPI';
+import { createSection, getSectionList } from '../../api/sectionAPI';
 
 const SectionList = () => {
   const [menuList, setMenuList] = useState(['미분류']);
@@ -26,6 +26,11 @@ const SectionList = () => {
     setMenuList(newMenuList);
     await createSection(name);
   };
+
+  useEffect(() => {
+    getSectionList()
+      .then(data => setMenuList([...data, ...menuList]));
+  }, []);
 
   return(
     <SectionListDiv>

@@ -13,3 +13,17 @@ exports.createSection = async( name ) => {
     return e;
   }
 };
+
+exports.getSectionList = async() => {
+  try {
+    let data = await sectionModel.findAll({
+      attributes: ['name'],
+      order: [['sectionId', 'DESC']]
+    });
+    data = data.map((obj) => {return obj['name']});
+    return data;
+  }
+  catch(e) {
+    return e;
+  }
+};

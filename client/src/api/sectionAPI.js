@@ -10,3 +10,13 @@ export const createSection = async( name ) => {
     console.log(e);
   }
 };
+
+export const getSectionList = async() => {
+  try {
+    const { data } = await apiClient.get('/section');
+    return data;
+  }
+  catch(e) {
+    console.log(e);
+  }
+}
