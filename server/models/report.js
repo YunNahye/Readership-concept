@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
         primaryKey: true
       },
       content: {
-        type: DataTypes.STRING,
+        type: DataTypes.JSON,
         allowNull: false
       }
     },

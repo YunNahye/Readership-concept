@@ -10,7 +10,7 @@ const Editor = () => {
   const saveHandler = async() => {
     await editor.current.save()
       .then(saveData => {
-        createReport(JSON.stringify(saveData));
+        createReport(saveData);
       })
   };
 

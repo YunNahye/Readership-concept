@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import Section from './Section';
+import { createSection } from '../../api/sectionAPI';
 
 const SectionList = () => {
   const [menuList, setMenuList] = useState(['미분류']);
@@ -13,13 +15,21 @@ const SectionList = () => {
     setPlusColor('#FADCD5');
   };
 
+  const addMenu = () => {
+    setMenuList(['', ...menuList]);
+  };
+
+  const addSection = async() => {
+
+  };
+
   return(
     <SectionListDiv>
       {menuList.map((menu) => (
-        <Section>{menu}</Section>
+        <Section key={menu} title={menu} />
       ))}
-      <Plus onMouseEnter={showPlus} onMouseLeave={hidePlus}>
-        <path d="m15 5v20m-10-10h20" stroke={plusColor} stroke-width="2.2" stroke-linecap="round"/>
+      <Plus onMouseEnter={showPlus} onMouseLeave={hidePlus} onClick={addMenu}>
+        <path d="m15 5v20m-10-10h20" stroke={plusColor} strokeWidth="2.2" strokeLinecap="round"/>
       </Plus>
     </SectionListDiv>
   );
@@ -33,23 +43,12 @@ const SectionListDiv = styled.div`
   height: 60vh;
 `;
 
-const Section = styled.div`
-  cursor: pointer;
-  width: 100%;
-  height: 2.5vh;
-  background-color: #FFF0ED;
-  color: #BF7E6F;
-  line-height: 2.5vh;
-  font-size: 18px;
-  padding-left: 2vw;
-`
-
 const Plus = styled.svg`
   cursor: pointer;
   float: right;
   margin-top: 6px;
   width: 30px;
   height: 30px;
-`
+`;
 
 export default SectionList;
