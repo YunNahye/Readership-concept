@@ -29,7 +29,7 @@ const SectionList = () => {
 
   useEffect(() => {
     getSectionList()
-      .then(data => setMenuList([...data, ...menuList]));
+      .then(data => setMenuList([...data, '미분류']));
   }, []);
 
   return(
@@ -58,8 +58,8 @@ const Plus = styled.svg`
   cursor: pointer;
   float: right;
   margin-top: 0.3vh;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
 `;
 
 export default SectionList;
