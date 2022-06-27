@@ -27,3 +27,17 @@ exports.getSectionList = async() => {
     return e;
   }
 };
+
+exports.deleteSection = async( name ) => {
+  try {
+    const data = await sectionModel.destroy({
+      where: {
+        name: name
+      }
+    })
+    return data;
+  }
+  catch(e) {
+    return e;
+  }
+};

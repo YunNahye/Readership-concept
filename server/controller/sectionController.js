@@ -10,3 +10,9 @@ exports.getSectionList = async(req, res) => {
   const data = await sectionService.getSectionList();
   return res.status(200).json(data);
 };
+
+exports.deleteSection = async(req, res) => {
+  const { name } = req.body;
+  const data = await sectionService.deleteSection(name);
+  return res.status(200).json(data);
+};

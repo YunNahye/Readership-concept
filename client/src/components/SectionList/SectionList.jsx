@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Section from './Section';
-import { createSection, getSectionList } from '../../api/sectionAPI';
+import { createSection, getSectionList, deleteSection } from '../../api/sectionAPI';
 
 const SectionList = () => {
   const [menuList, setMenuList] = useState(['미분류']);
@@ -27,6 +27,12 @@ const SectionList = () => {
     await createSection(name);
   };
 
+  const removeSection = async( name ) => {
+    const newMenuList = menuList.filter((item) => { return item !== name });
+    setMenuList(newMenuList);
+    await deleteSection(name);
+  }
+
   useEffect(() => {
     getSectionList()
       .then(data => setMenuList([...data, '미분류']));
@@ -35,7 +41,7 @@ const SectionList = () => {
   return(
     <SectionListDiv>
       {menuList.map((menu) => (
-        <Section key={menu} title={menu} addSection={addSection} />
+        <Section key={menu} title={menu} addSection={addSection} removeSection={removeSection} />
       ))}
       {menuList[0] && 
         <Plus onMouseEnter={showPlus} onMouseLeave={hidePlus} onClick={addMenu}>

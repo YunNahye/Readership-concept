@@ -19,4 +19,15 @@ export const getSectionList = async() => {
   catch(e) {
     console.log(e);
   }
-}
+};
+
+export const deleteSection = async( name ) => {
+  try {
+    const body = { name };
+    const data = await apiClient.post('/section/delete', body);
+    return data;
+  }
+  catch(e) {
+    console.log(e);
+  }
+};

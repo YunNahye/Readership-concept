@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-const Section = ({ title, addSection }) => {
+const Section = ({ title, addSection, removeSection }) => {
   const [editMode, setEditMode] = useState(false);
   const [xColor, setXColor] = useState('#FFF0ED');
   const inputElement = useRef(null);
@@ -10,6 +10,10 @@ const Section = ({ title, addSection }) => {
     if(inputElement.current.value !== '') {
       addSection(inputElement.current.value);
     }
+  };
+
+  const remove = () => {
+    removeSection(title);
   };
 
   const keyPressAdd = (e) => {
@@ -47,8 +51,8 @@ const Section = ({ title, addSection }) => {
         </> :
         <>
           {title}
-          <DeleteMark onMouseEnter={showX} onMouseLeave={hideX}>
-            <path stroke={xColor} stroke-width='2' stroke-linecap='round' d='M8,8 L18,18 M18,8 L8,18'/>
+          <DeleteMark onMouseEnter={showX} onMouseLeave={hideX} onClick={remove}>
+            <path stroke={xColor} strokeWidth='2' strokeLinecap='round' d='M8,8 L18,18 M18,8 L8,18'/>
           </DeleteMark>
         </>
       }
