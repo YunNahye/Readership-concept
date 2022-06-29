@@ -41,22 +41,22 @@ const Section = ({ title, addSection, removeSection }) => {
   }, [editMode]);
 
   return(
-    <SectionDiv>
+    <>
       {editMode ?
-        <>
+        <SectionDiv>
           <Input ref={inputElement} onKeyDown={keyPressAdd}/>
           <CheckMark onClick={add}>
             <path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#D8A093'/>
           </CheckMark>
-        </> :
-        <>
+        </SectionDiv> :
+        <SectionDiv>
           {title}
-          <DeleteMark onMouseEnter={showX} onMouseLeave={hideX} onClick={remove}>
+          <DeleteMark viewBox='0 0 20 20' onMouseEnter={showX} onMouseLeave={hideX} onClick={remove}>
             <path stroke={xColor} strokeWidth='2' strokeLinecap='round' d='M8,8 L18,18 M18,8 L8,18'/>
           </DeleteMark>
-        </>
+        </SectionDiv>
       }
-    </SectionDiv>
+    </>
   );
 };
 
@@ -90,7 +90,7 @@ const Input = styled.input`
 const DeleteMark = styled.svg`
   cursor: pointer;
   float: right;
-  margin-top: 2px;
+  vertical-align: middle;
   margin-right: 12px;
   width: 22px;
   height: 22px;

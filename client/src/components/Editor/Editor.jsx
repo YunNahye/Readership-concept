@@ -4,14 +4,14 @@ import EditorJS from '@editorjs/editorjs';
 import { EDITOR_JS_TOOLS } from './tools';
 import { createReport } from '../../api/reportAPI';
 
-const Editor = () => {
+const Editor = ({ section }) => {
   const editor = useRef(null);
 
   const saveHandler = async() => {
     await editor.current.save()
       .then(saveData => {
-        createReport(saveData);
-      })
+        createReport(saveData, section);
+      });
   };
 
   useEffect(() => {
