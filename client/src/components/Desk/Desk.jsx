@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { getReportListBySection } from '../../api/reportAPI';
 
 const Desk = ({ section }) => {
+  const getReport = async() => {
+    const data = await getReportListBySection(section);
+    console.log(data);
+  }
+
+  useEffect(() => {
+    getReport();
+  }, [section])
+
   return(
     <DeskDiv>
       <Link to='/write'>

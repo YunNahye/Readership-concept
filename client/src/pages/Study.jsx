@@ -6,12 +6,17 @@ const Study = () => {
   const [currentSection, setCurrentSection] = useState(null);
 
   const changeSection = ( section ) => {
-    setCurrentSection(section);
+    if (section === '미분류') {
+      setCurrentSection(null);
+    }
+    else {
+      setCurrentSection(section);
+    }
   };
 
   return(
     <>
-      <Bookshelf></Bookshelf>
+      <Bookshelf changeSection={changeSection}></Bookshelf>
       <Desk section={currentSection}></Desk>
     </>
   );

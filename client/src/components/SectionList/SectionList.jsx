@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Section from './Section';
 import { createSection, getSectionList, deleteSection } from '../../api/sectionAPI';
 
-const SectionList = () => {
+const SectionList = ({ changeSection }) => {
   const [menuList, setMenuList] = useState(['미분류']);
   const [plusColor, setPlusColor] = useState('#FADCD5');
 
@@ -41,7 +41,7 @@ const SectionList = () => {
   return(
     <SectionListDiv>
       {menuList.map((menu) => (
-        <Section key={menu} title={menu} addSection={addSection} removeSection={removeSection} />
+        <Section key={menu} title={menu} changeSection={changeSection} addSection={addSection} removeSection={removeSection} />
       ))}
       {menuList[0] && 
         <Plus onMouseEnter={showPlus} onMouseLeave={hidePlus} onClick={addMenu}>

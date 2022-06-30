@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import SectionList from '../SectionList';
 
-const Bookshelf = () => {
+const Bookshelf = ({ changeSection }) => {
   return(
     <>
       <BookshelfDiv>
-        <SectionList></SectionList>
+        <SectionList changeSection={changeSection}></SectionList>
       </BookshelfDiv>
       <Helper></Helper>
     </>

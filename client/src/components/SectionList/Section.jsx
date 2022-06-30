@@ -1,10 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-const Section = ({ title, addSection, removeSection }) => {
+const Section = ({ title, addSection, removeSection, changeSection }) => {
   const [editMode, setEditMode] = useState(false);
   const [xColor, setXColor] = useState('#FFF0ED');
   const inputElement = useRef(null);
+
+  const click = () => {
+    changeSection(title);
+  };
 
   const add = () => {
     if(inputElement.current.value !== '') {
@@ -49,7 +53,7 @@ const Section = ({ title, addSection, removeSection }) => {
             <path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#D8A093'/>
           </CheckMark>
         </SectionDiv> :
-        <SectionDiv>
+        <SectionDiv onClick={click}>
           {title}
           <DeleteMark viewBox='0 0 20 20' onMouseEnter={showX} onMouseLeave={hideX} onClick={remove}>
             <path stroke={xColor} strokeWidth='2' strokeLinecap='round' d='M8,8 L18,18 M18,8 L8,18'/>

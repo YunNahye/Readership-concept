@@ -10,3 +10,13 @@ export const createReport = async( content, section ) => {
     console.log(e);
   }
 };
+
+export const getReportListBySection = async( section ) => {
+  try {
+    const data = await apiClient.get(`/report/${section}`);
+    return data;
+  }
+  catch(e) {
+    console.log(e);
+  }
+}

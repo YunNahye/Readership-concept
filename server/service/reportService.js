@@ -15,3 +15,17 @@ exports.createReport = async({ title, content, section }) => {
     return e;
   }
 };
+
+exports.getReportListBySection = async( section ) => {
+  try {
+    const data = await reportModel.findAll({
+      where: {
+        section: section
+      }
+    });
+    return data;
+  }
+  catch(e) {
+    return e;
+  }
+};
