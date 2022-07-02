@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 
-const Section = ({ title, addSection, removeSection, changeSection }) => {
+const Section = ({ id, title, addSection, removeSection, changeSection }) => {
   const [editMode, setEditMode] = useState(false);
   const [xColor, setXColor] = useState('#FFF0ED');
   const inputElement = useRef(null);
 
   const click = () => {
-    changeSection(title);
+    changeSection(id);
   };
 
   const add = () => {

@@ -18,9 +18,18 @@ exports.createReport = async({ title, content, section }) => {
 
 exports.getReportListBySection = async( section ) => {
   try {
+    if (section === 'null') {
+      console.log('null조회');
+      const data = await reportModel.findAll({
+        where: {
+          sectionId: null
+        }
+      });
+      return data;
+    }
     const data = await reportModel.findAll({
       where: {
-        section: section
+        sectionId: section
       }
     });
     return data;

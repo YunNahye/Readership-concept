@@ -35,13 +35,16 @@ const SectionList = ({ changeSection }) => {
 
   useEffect(() => {
     getSectionList()
-      .then(data => setMenuList([...data, '미분류']));
+      .then(data => {
+        changeSection(data[0][1]);
+        setMenuList([...data, ['미분류', null]]);
+      });
   }, []);
 
   return(
     <SectionListDiv>
       {menuList.map((menu) => (
-        <Section key={menu} title={menu} changeSection={changeSection} addSection={addSection} removeSection={removeSection} />
+        <Section key={menu[1]} id={menu[1]} title={menu[0]} changeSection={changeSection} addSection={addSection} removeSection={removeSection} />
       ))}
       {menuList[0] && 
         <Plus onMouseEnter={showPlus} onMouseLeave={hidePlus} onClick={addMenu}>

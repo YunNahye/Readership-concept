@@ -17,10 +17,9 @@ exports.createSection = async( name ) => {
 exports.getSectionList = async() => {
   try {
     let data = await sectionModel.findAll({
-      attributes: ['name'],
       order: [['sectionId', 'DESC']]
     });
-    data = data.map((obj) => {return obj['name']});
+    data = data.map((obj) => {return [obj['name'], obj['sectionId']]});
     return data;
   }
   catch(e) {

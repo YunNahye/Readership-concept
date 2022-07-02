@@ -6,12 +6,7 @@ const Study = () => {
   const [currentSection, setCurrentSection] = useState(null);
 
   const changeSection = ( section ) => {
-    if (section === '미분류') {
-      setCurrentSection(null);
-    }
-    else {
-      setCurrentSection(section);
-    }
+    setCurrentSection(section);
   };
 
   return(
