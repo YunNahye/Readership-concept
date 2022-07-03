@@ -3,9 +3,12 @@ import styled from 'styled-components';
 import EditorJS from '@editorjs/editorjs';
 import { EDITOR_JS_TOOLS } from './tools';
 import { createReport } from '../../api/reportAPI';
+import { Link, useLocation } from 'react-router-dom';
 
-const Editor = ({ section }) => {
+const Editor = () => {
   const editor = useRef(null);
+  const location = useLocation();
+  const section = location.state.section;
 
   const saveHandler = async() => {
     await editor.current.save()
@@ -49,7 +52,9 @@ const Editor = ({ section }) => {
   return(
     <EditorDiv>
       <div id='editorJS' />
-      <SaveBtn onClick={saveHandler} />
+      <Link to='/study'>
+        <SaveBtn onClick={saveHandler}>저 장</SaveBtn>
+      </Link>
     </EditorDiv>
   );
 };
@@ -65,8 +70,12 @@ const SaveBtn = styled.div`
   bottom: 2vh;
   width: 90px;
   height: 40px;
-  background-color: #D8A093;
+  background-color: #F1CAC1;
   border-radius: 10px;
+  color: #BF7E6F;
+  padding: 8px 0;
+  text-align: center;
+  font-size: 16px;
 `
 
 export default Editor;

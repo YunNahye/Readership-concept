@@ -4,18 +4,21 @@ import { Link } from 'react-router-dom';
 import { getReportListBySection } from '../../api/reportAPI';
 
 const Desk = ({ section }) => {
+  const [reportList, setReportList] = useState([]);
+
   const getReport = async() => {
     const data = await getReportListBySection(section);
+    setReportList(data);
     console.log(data);
-  }
+  };
 
   useEffect(() => {
     getReport();
-  }, [section])
+  }, [section]);
 
   return(
     <DeskDiv>
-      <Link to='/write'>
+      <Link to='/write' state={{ section: section }}>
         <AddBtn/>
       </Link>
     </DeskDiv>

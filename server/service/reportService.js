@@ -6,7 +6,7 @@ exports.createReport = async({ title, content, section }) => {
     const newReport = {
       title,
       content,
-      section
+      sectionId: section
     }
     const data = await reportModel.create(newReport);
     return data;

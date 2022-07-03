@@ -3,6 +3,7 @@ import apiClient from './apiClient';
 export const createReport = async( content, section ) => {
   try {
     const body = { title: content.blocks[0].data.text, content, section };
+    console.log(body);
     const data = await apiClient.post('/report', body);
     return data;
   }
