@@ -55,7 +55,7 @@ const Section = ({ id, title, addSection, removeSection, changeSection }) => {
         </SectionDiv> :
         <SectionDiv onClick={click}>
           {title}
-          <DeleteMark viewBox='0 0 20 20' onMouseEnter={showX} onMouseLeave={hideX} onClick={remove}>
+          <DeleteMark viewBox='0 0 25 25' viewPort='0 0 10 10' onMouseEnter={showX} onMouseLeave={hideX} onClick={remove}>
             <path stroke={xColor} strokeWidth='2' strokeLinecap='round' d='M8,8 L18,18 M18,8 L8,18'/>
           </DeleteMark>
         </SectionDiv>
@@ -65,6 +65,9 @@ const Section = ({ id, title, addSection, removeSection, changeSection }) => {
 };
 
 const SectionDiv = styled.div`
+  display: grid;
+  grid-template-columns: 85% 15%;
+  align-items: center;
   cursor: pointer;
   width: 100%;
   height: 4vh;
@@ -94,10 +97,8 @@ const Input = styled.input`
 const DeleteMark = styled.svg`
   cursor: pointer;
   float: right;
-  vertical-align: middle;
-  margin-right: 12px;
-  width: 22px;
-  height: 22px;
+  width: 1.8vh;
+  height: 1.8vh;
 `;
 
 const CheckMark = styled.svg`
