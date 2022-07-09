@@ -49,7 +49,7 @@ const Section = ({ id, title, addSection, removeSection, changeSection }) => {
       {editMode ?
         <SectionDiv>
           <Input ref={inputElement} onKeyDown={keyPressAdd}/>
-          <CheckMark onClick={add}>
+          <CheckMark viewBox='0 0 25 25' viewPort='0 0 10 10' onClick={add}>
             <path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#D8A093'/>
           </CheckMark>
         </SectionDiv> :
@@ -97,8 +97,8 @@ const Input = styled.input`
 const DeleteMark = styled.svg`
   cursor: pointer;
   float: right;
-  width: 1.8vh;
-  height: 1.8vh;
+  width: 2vh;
+  height: 2vh;
 `;
 
 const CheckMark = styled.svg`
@@ -106,8 +106,8 @@ const CheckMark = styled.svg`
   float: right;
   margin-top: 5px;
   margin-right: 12px;
-  width: 24px;
-  height: 24px;
+  width: 2vh;
+  height: 2vh;
 `;
 
 export default Section;
