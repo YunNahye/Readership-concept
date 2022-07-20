@@ -53,8 +53,8 @@ const Section = ({ id, title, addSection, removeSection, changeSection }) => {
             <path d='M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z' fill='#D8A093'/>
           </CheckMark>
         </SectionDiv> :
-        <SectionDiv onClick={click}>
-          {title}
+        <SectionDiv>
+          <SectionTitle onClick={click}>{title}</SectionTitle>
           <DeleteMark viewBox='0 0 25 25' viewPort='0 0 10 10' onMouseEnter={showX} onMouseLeave={hideX} onClick={remove}>
             <path stroke={xColor} strokeWidth='2' strokeLinecap='round' d='M8,8 L18,18 M18,8 L8,18'/>
           </DeleteMark>
@@ -86,13 +86,18 @@ const Input = styled.input`
   height: 95%;
   border: 0px;
   color: #BF7E6F;
-  font-size: 16px;
+  font-size: 1.9vh;
   font-weight: 600;
   background-color: #FFF0ED;
   :focus {
     outline: none;
   }
 `;
+
+const SectionTitle = styled.div`
+  width: 100%;
+  height: 100%;
+`
 
 const DeleteMark = styled.svg`
   cursor: pointer;

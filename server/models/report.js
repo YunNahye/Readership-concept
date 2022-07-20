@@ -15,6 +15,9 @@ module.exports = function(sequelize, DataTypes) {
       content: {
         type: DataTypes.JSON,
         allowNull: false
+      },
+      date: {
+        type: DataTypes.DATEONLY
       }
     },
     {

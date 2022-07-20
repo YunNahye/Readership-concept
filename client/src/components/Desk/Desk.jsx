@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { getReportListBySection } from '../../api/reportAPI';
+import Note from '../Note';
 
 const Desk = ({ section }) => {
   const [reportList, setReportList] = useState([]);
@@ -9,7 +10,6 @@ const Desk = ({ section }) => {
   const getReport = async() => {
     const data = await getReportListBySection(section);
     setReportList(data);
-    console.log(data);
   };
 
   useEffect(() => {
@@ -18,6 +18,11 @@ const Desk = ({ section }) => {
 
   return(
     <DeskDiv>
+      <NoteArea>
+        {reportList && reportList.map((report) => (
+          <Note key={report.reportId} title={report.title}></Note>
+        ))}
+      </NoteArea>
       <Link to='/write' state={{ section: section }}>
         <AddBtn/>
       </Link>
@@ -33,6 +38,12 @@ const DeskDiv = styled.div`
   height: 70vh;
   border: solid 1px #d8a093;
   border-radius: 35px;
+`;
+
+const NoteArea = styled.div`
+  width: 90%;
+  height: 100%;
+  margin: 3vh auto;
 `;
 
 const AddBtn = styled.div`

@@ -3,10 +3,12 @@ const reportModel = models.report;
 
 exports.createReport = async({ title, content, section }) => {
   try {
+    const today = new Date();
     const newReport = {
       title,
       content,
-      sectionId: section
+      sectionId: section,
+      date: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`
     }
     const data = await reportModel.create(newReport);
     return data;
@@ -19,7 +21,6 @@ exports.createReport = async({ title, content, section }) => {
 exports.getReportListBySection = async( section ) => {
   try {
     if (section === 'null') {
-      console.log('null조회');
       const data = await reportModel.findAll({
         where: {
           sectionId: null

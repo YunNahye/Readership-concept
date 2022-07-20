@@ -31,7 +31,7 @@ const SectionList = ({ changeSection }) => {
   };
 
   const removeSection = async( name ) => {
-    const newMenuList = menuList.filter((item) => { return item !== name });
+    const newMenuList = menuList.filter((item) => { return item[0] !== name });
     setMenuList(newMenuList);
     await deleteSection(name);
   }
