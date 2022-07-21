@@ -3,6 +3,7 @@ const router = express.Router();
 const reportController = require('../controller/reportController');
 
 router.post('/', reportController.createReport);
-router.get('/:section', reportController.getReportListBySection);
+router.get('/list/:section', reportController.getReportListBySection);
+router.post('/update', reportController.updateReport);
 
 module.exports = router;

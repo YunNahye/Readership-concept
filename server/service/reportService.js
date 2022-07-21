@@ -39,3 +39,21 @@ exports.getReportListBySection = async( section ) => {
     return e;
   }
 };
+
+exports.updateReport = async( reportId, title, content ) => {
+  try {
+    console.log(reportId);
+    const today = new Date();
+    const data = await reportModel.update({ title, content, date: `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}` },
+      {
+        where: {
+          reportId
+        }
+      }  
+    );
+    return data;
+  }
+  catch(e) {
+    return e;
+  }
+}

@@ -20,10 +20,12 @@ const Desk = ({ section }) => {
     <DeskDiv>
       <NoteArea>
         {reportList && reportList.map((report) => (
-          <Note key={report.reportId} title={report.title}></Note>
+          <Link to='/write' state={{ section: section, reportData: report }}>
+            <Note key={report.reportId} title={report.title}></Note>
+          </Link>
         ))}
       </NoteArea>
-      <Link to='/write' state={{ section: section }}>
+      <Link to='/write' state={{ section: section, reportData: null }}>
         <AddBtn/>
       </Link>
     </DeskDiv>
