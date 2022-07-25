@@ -21,7 +21,7 @@ const Desk = ({ section }) => {
       <NoteArea>
         {reportList && reportList.map((report) => (
           <Link to='/write' state={{ section: section, reportData: report }}>
-            <Note key={report.reportId} title={report.title}></Note>
+            <Note key={report.reportId} title={report.title} date={report.date}></Note>
           </Link>
         ))}
       </NoteArea>

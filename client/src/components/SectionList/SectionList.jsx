@@ -49,7 +49,7 @@ const SectionList = ({ changeSection }) => {
       {menuList.map((menu) => (
         <Section key={menu[0]} id={menu[1]} title={menu[0]} changeSection={changeSection} addSection={addSection} removeSection={removeSection} />
       ))}
-      {menuList[0] && 
+      {menuList[0] && menuList[0][0] !== '' &&
         <Plus viewBox='0 0 25 25' viewPort='0 0 15 15' onMouseEnter={showPlus} onMouseLeave={hidePlus} onClick={addMenu}>
           <path d="m15 5v20m-10-10h20" stroke={plusColor} strokeWidth="2.2" strokeLinecap="round"/>
         </Plus>
